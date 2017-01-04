@@ -30,6 +30,6 @@ app.controller('mainController', function($scope){
 
   $scope.onMarkTask = function(item){
     console.log("passou");
-    item.finalizada = item.finalizada;
+    item.finalizada = !item.finalizada;
   };
 });
