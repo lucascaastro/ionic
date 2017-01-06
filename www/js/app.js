@@ -27,9 +27,31 @@ app.controller('mainController', function($scope){
   var tasks = new getTasks();
 
   $scope.lista = tasks.items;
+  $scope.showMarked = false;
+  $scope.removeStatus = false;
 
   $scope.onMarkTask = function(item){
     console.log("passou");
     item.finalizada = !item.finalizada;
+  };
+
+  $scope.onHideItem = function(item){
+    return item.finalizada && !$scope.showMarked;
+  };
+
+  $scope.onItemAdd = function () {
+    console.log("passou7");
+    var item = {nome: "teste add", finalizada: false};
+
+    getItem();
+
+    tasks.add(item);
+  };
+
+  $scope.onItemRemove = function(item){
+    tasks.remove(item);
+  };
+  $scope.onClickRemove = function () {
+    $scope.removeStatus = !$scope.removeStatus;
   };
 });
